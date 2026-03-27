@@ -1,0 +1,85 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  font-family: 'Global User Interface', sans-serif;
+}
+
+/* ========================================
+   TABELA MODERNA - ADFLOW
+======================================== */
+
+.table-adflow {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+/* Cabeçalho */
+.table-adflow thead th {
+    background-color: transparent;
+    color: #64748B;
+    font-weight: 600;
+    border: none;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+/* Linhas */
+.table-adflow tbody tr {
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+/* Efeito hover */
+.table-adflow tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Células */
+.table-adflow td {
+    padding: 15px;
+    border: none;
+    vertical-align: middle;
+}
+
+/* Bordas arredondadas */
+.table-adflow tbody tr td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.table-adflow tbody tr td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
