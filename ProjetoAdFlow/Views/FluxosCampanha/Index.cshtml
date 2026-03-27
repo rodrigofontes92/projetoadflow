@@ -1,0 +1,78 @@
+﻿@model IEnumerable<AdFlow.Models.FluxoCampanha>
+
+@{
+    ViewData["Title"] = "Fluxos de Campanha";
+}
+
+<h1>Fluxos de Campanha</h1>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Fluxo</a>
+</p>
+<hr />
+<br>
+<form method="get" class="d-flex align-items-center gap-2">
+
+    <select name="campanhaId" class="form-control w-auto">
+        <option value="">-- Campanha --</option>
+        @foreach (var c in ViewBag.Campanhas)
+        {
+            <option value="@c.Id">@c.Nome</option>
+        }
+    </select>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+    <br>
+</form>
+<table class="table-adflow">
+    <thead>
+        <tr>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Data Criação
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Campanha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Material)
+            </th>
+            <th>
+                Funcionário
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Campanha.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                @if (User.IsInRole("Administrador"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

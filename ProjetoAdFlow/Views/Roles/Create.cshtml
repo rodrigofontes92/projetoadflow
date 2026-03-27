@@ -1,0 +1,26 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+
+@{
+    ViewData["Title"] = "Criar Cargo";
+}
+
+<h1>Criar Novo Cargo</h1>
+<br>
+<form asp-action="Create">
+
+    <div class="form-group">
+        <label>Nome do Cargo</label>
+        <input name="name" class="form-control" style="width:400px;" />
+    </div>
+
+    <br />
+    <br>
+    <button type="submit" class="btn btn-primary">
+        Criar
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancelar
+    </a>
+
+</form>

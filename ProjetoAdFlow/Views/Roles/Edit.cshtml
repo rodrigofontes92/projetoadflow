@@ -1,0 +1,28 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+
+@{
+    ViewData["Title"] = "Editar Cargo";
+}
+
+<h1>Editar Cargo</h1>
+<br>
+<form asp-action="Edit">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label>Nome do Cargo</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <br />
+    <br>
+    <button type="submit" class="btn btn-primary">
+        Guardar
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancelar
+    </a>
+
+</form>

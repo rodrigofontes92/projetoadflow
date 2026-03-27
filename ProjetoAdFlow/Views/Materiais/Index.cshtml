@@ -1,0 +1,79 @@
+﻿@model IEnumerable<AdFlow.Models.Material>
+
+@{
+    ViewData["Title"] = "Materiais";
+}
+
+<h1>Materiais</h1>
+<p>
+    @if (User.IsInRole("Administrador") || User.IsInRole("Redator") || User.IsInRole("Designer"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Novo Material</a>
+    }
+</p>
+<hr />
+<br>
+<form method="get" class="d-flex align-items-center gap-2">
+
+    <select name="tipo" class="form-control w-auto">
+        <option value="">-- Tipo --</option>
+        <option value="1">Texto</option>
+        <option value="2">Criativo</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+</form>
+<br>
+<table class="table-adflow">
+    <thead>
+        <tr>
+            <th>
+                Material
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                Caminho do Ficheiro
+            </th>
+            <th>
+                Data Criação
+            </th>
+            <th>
+                Criado Por
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaminhoArquivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+            </td>
+            <td>
+                @if (User.IsInRole("Administrador") || User.IsInRole("Redator") || User.IsInRole("Designer"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    }
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                @if (User.IsInRole("Administrador"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

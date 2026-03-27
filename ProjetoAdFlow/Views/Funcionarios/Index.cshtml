@@ -1,0 +1,39 @@
+﻿@model IEnumerable<(AdFlow.Models.Identity.ApplicationUser user, string role)>
+
+@{
+    ViewData["Title"] = "Funcionários";
+}
+
+<h1>Funcionários</h1>
+<br>
+<p>
+    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary">Novo Funcionário</a>
+</p>
+<br>
+<table class="table-adflow">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>NIF</th>
+            <th>Endereço</th>
+            <th>Cargo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.user.Nome</td>
+                <td>@item.user.Email</td>
+                <td>@item.user.NIF</td>
+                <td>@item.user.Endereco</td>
+                <td>@item.role</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.user.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.user.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

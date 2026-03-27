@@ -1,0 +1,29 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+
+@{
+    ViewData["Title"] = "Eliminar Cargo";
+}
+
+<h1>Eliminar Cargo</h1>
+<br>
+<h3>Tem certeza que deseja eliminar este cargo?</h3>
+<br>
+<div>
+    <strong>@Model.Name</strong>
+</div>
+<br>
+<form asp-action="Delete">
+
+    <input type="hidden" asp-for="Id" />
+
+    <br />
+
+    <button type="submit" class="btn btn-danger">
+        Eliminar
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancelar
+    </a>
+
+</form>

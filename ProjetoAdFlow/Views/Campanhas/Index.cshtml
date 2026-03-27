@@ -1,0 +1,114 @@
+﻿@model IEnumerable<AdFlow.Models.Campanha>
+
+@{
+    ViewData["Title"] = "Campanhas";
+}
+
+<h1>Campanhas</h1>
+<p>
+    @if (User.IsInRole("Administrador") || User.IsInRole("AnalistaOn") || User.IsInRole("AnalistaOff"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Nova Campanha</a>
+    }
+</p>
+<hr />
+<br>
+<form method="get" class="d-flex align-items-center gap-2">
+    <select name="clienteId" class="form-control w-auto">
+        <option value="">-- Cliente --</option>
+        @foreach (var c in ViewBag.Clientes)
+        {
+            <option value="@c.Id">@c.Nome</option>
+        }
+    </select>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+
+</form>
+<br>
+<table class="table-adflow">
+    <thead>
+        <tr>
+            <th>
+                Nome Campanha
+            </th>
+            <th>
+                Data Criação
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                Data Início
+            </th>
+            <th>
+                Data Fim
+            </th>
+            <th>
+                Orçamento
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prioridade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                Criado Por
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orcamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prioridade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+            </td>
+            <td>
+                    @if (User.IsInRole("Administrador") || User.IsInRole("AnalistaOn") || User.IsInRole("AnalistaOff"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    }
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                @if (User.IsInRole("Administrador"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<AdFlow.Models.Identity.ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="text-center mt-5">
+        <h1 class="display-4">Bem-vindo ao AdFlow 🚀</h1>
+        <br>
+        <p class="lead">
+            Plataforma de gestão de campanhas publicitárias
+            com controlo total de processos, materiais e equipas.
+        </p>
+        <br>
+        <hr />
+        <br>
+        
+    </div>
+}
+else
+{
+    <div class="mt-4">
+
+        <h2>Bem-vindo, @User.Identity.Name 👋</h2>
+        <br>
+        <hr />
+        <br>
+        <!-- DASHBOARD DINÂMICO POR ROLE -->
+        <!-- ADMIN -->
+        @if (User.IsInRole("Administrador"))
+        {
+            <partial name="~/Views/Home/Dashboards/_DashboardAdmin.cshtml" />
+        }
+
+        <!-- ANALISTA -->
+        @if (User.IsInRole("AnalistaOn") || User.IsInRole("AnalistaOff"))
+        {
+            <partial name="~/Views/Home/Dashboards/_DashboardAnalista.cshtml" />
+        }
+
+        <!-- DESIGNER -->
+        @if (User.IsInRole("Designer"))
+        {
+            <partial name="~/Views/Home/Dashboards/_DashboardDesigner.cshtml" />
+        }
+
+        <!-- REDATOR -->
+        @if (User.IsInRole("Redator"))
+        {
+            <partial name="~/Views/Home/Dashboards/_DashboardRedator.cshtml" />
+        }
+
+    </div>
+}
