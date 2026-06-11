@@ -1,97 +1,99 @@
-# Projeto AdFlow
+# AdFlow Project
 
-AdFlow é uma aplicação web desenvolvida para gestão de campanhas de marketing digital, com foco em organização de fluxos de trabalho, definição de prioridades e acompanhamento de desempenho.
+AdFlow is a web application developed for managing digital marketing campaigns, with a focus on workflow organization, priority management, and performance tracking.
 
-O sistema foi projetado para auxiliar equipas e profissionais a manter controlo sobre campanhas, melhorar a produtividade e apoiar decisões baseadas em dados.
-
----
-
-## Objetivo
-
-Fornecer uma plataforma simples e eficiente para gerir campanhas de marketing digital, permitindo acompanhar o ciclo completo desde a criação até à análise de resultados.
+The system was designed to help teams and professionals maintain control over campaigns, improve productivity, and support data-driven decision-making.
 
 ---
 
-## Tecnologias Utilizadas
+## Objective
+
+Provide a simple and efficient platform for managing digital marketing campaigns, enabling users to oversee the entire campaign lifecycle, from creation to performance analysis.
+
+---
+
+## Technologies Used
 
 * ASP.NET Core (MVC)
 * Entity Framework Core
 * SQL Server
-* ASP.NET Identity (autenticação e autorização)
-* Bootstrap (interface)
+* ASP.NET Identity (Authentication and Authorization)
+* Bootstrap (User Interface)
 * C#
 
 ---
 
-## Funcionalidades
+## Features
 
-* Gestão de campanhas
-* Definição de prioridades por gestor de fluxo
-* Sistema de utilizadores com permissões (roles)
-* Acompanhamento de desempenho
-* Organização de fluxos de trabalho
-* Sistema de autenticação e autorização (Identity)
-
----
-
-## Arquitetura
-
-O projeto segue uma arquitetura baseada em:
-
-* Separação por camadas (Model, View, Controller)
-* Utilização do Entity Framework para persistência de dados
-* Identity para gestão de utilizadores e roles
+* Campaign management
+* Priority assignment by workflow managers
+* Role-based user management system
+* Performance tracking
+* Workflow organization
+* Authentication and authorization system (Identity)
 
 ---
 
-## Gestão de Utilizadores
+## Architecture
 
-O sistema utiliza ASP.NET Identity com:
+The project follows an architecture based on:
 
-* `UserManager` para gestão de utilizadores
-* `RoleManager` para gestão de permissões
-* Classe `ApplicationUser` personalizada
-
----
-
-## Regras de Negócio
-
-* A prioridade das campanhas é definida exclusivamente pelo gestor de fluxo
-* Campanhas criadas ficam pendentes até definição de prioridade
-* O sistema garante controlo de acessos por tipo de utilizador
+* Layered separation (Model, View, Controller)
+* Entity Framework for data persistence
+* ASP.NET Identity for user and role management
 
 ---
 
-## Como Executar o Projeto
+## User Management
 
-1. Clonar o repositório:
+The system uses ASP.NET Identity with:
+
+* `UserManager` for user management
+* `RoleManager` for permission and role management
+* Custom `ApplicationUser` class
+
+---
+
+## Business Rules
+
+* Campaign priority is defined exclusively by workflow managers
+* Newly created campaigns remain pending until a priority is assigned
+* The system enforces access control based on user roles
+
+---
+
+## Running the Project
+
+1. Clone the repository:
 
 ```bash
-git clone https://github.com/seu-usuario/adflow.git
+git clone https://github.com/your-username/adflow.git
 ```
 
-2. Configurar a base de dados no `appsettings.json`
+2. Configure the database connection in `appsettings.json`
 
-3. Executar as migrations:
+3. Run the migrations:
 
 ```bash
 update-database
 ```
 
-4. Iniciar o projeto:
+4. Start the application:
 
 ```bash
 dotnet run
 ```
 
-## Autor
+---
+
+## Author
 
 Rodrigo Fontes
-Desenvolvedor de Software | Especialista em Marketing Digital
+
+Software Developer | Digital Marketing Specialist
 
 ---
 
-## Licença
+## License
 
-Este projeto é para fins educacionais.
-
+This project was developed for educational purposes.
